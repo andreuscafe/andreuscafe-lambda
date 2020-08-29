@@ -7,5 +7,6 @@ module.exports = (req, res) => {
 
     res.json({
         body: "Prueba",
+        query: req.query,
     });
 };
