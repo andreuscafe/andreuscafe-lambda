@@ -4,6 +4,9 @@ const redis = require("redis");
 module.exports = (req, res) => {
     const client = redis.createClient({
         url: process.env.REDIS_URL,
+        password: process.env.REDIS_PW,
+        host: process.env.REDIS_HOST,
+        port: process.env.REDIS_PORT,
     });
     const key = req.query.key;
     // const chat = key ? content[key] : "";
