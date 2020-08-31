@@ -2,22 +2,19 @@ import content from "./content";
 const redis = require("redis");
 
 module.exports = (req, res) => {
-    // const client = redis.createClient({
-    //     url: process.env.REDIS_URL,
-    // });
+    const { key, chat, title } = req.body;
 
-    // // read/write with your Redis client
-    // client.on("connect", function () {
-    //     client.set("foo", "bar");
-    //     client.quit();
-    // });
+    const client = redis.createClient({
+        url: process.env.REDIS_URL,
+    });
 
-    // client.quit();
-
-    // const chat = req.query.key ? content[req.query.key] : "";
-
-    res.json({
-        key: req.query.key,
-        body: req.body,
+    // read/write with your Redis client
+    client.on("connect", function () {
+        client.set(key, chat, (err, rep) => {
+            res.json({
+                status: rep,
+            });
+        });
+        client.quit();
     });
 };
