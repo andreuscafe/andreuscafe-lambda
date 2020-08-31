@@ -14,7 +14,7 @@ module.exports = (req, res) => {
         console.log("Trying to get key: ", key);
 
         client.get(key, (err, rep) => {
-            console.log("REP is:", rep);
+            console.log("ERR/REP is:", err, rep);
             chat = rep;
 
             res.json({
