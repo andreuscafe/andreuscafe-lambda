@@ -13,7 +13,7 @@ module.exports = (req, res) => {
 
     // read/write with your Redis client
     client.on("connect", function () {
-        client.set(key, chat, (err, rep) => {
+        client.set(key, JSON.stringify(chat), (err, rep) => {
             console.log("I think it's saved on key:", key, err, rep);
             res.json({
                 redisURL: process.env.REDIS_URL,
