@@ -20,6 +20,7 @@ module.exports = (req, res) => {
             res.json({
                 key: key,
                 body: chat,
+                err: err,
             });
         });
 

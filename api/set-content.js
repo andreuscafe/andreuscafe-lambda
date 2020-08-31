@@ -14,6 +14,8 @@ module.exports = (req, res) => {
             console.log("I think it's saved on key:", key, err, rep);
             res.json({
                 status: rep,
+                key,
+                err,
             });
         });
         client.quit();
