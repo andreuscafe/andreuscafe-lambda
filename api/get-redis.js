@@ -5,19 +5,21 @@ module.exports = (req, res) => {
     // const client = redis.createClient({
     //     url: process.env.REDIS_URL,
     // });
+    const key = req.query.key;
+    const chat = key ? content[key] : "";
 
-    // // read/write with your Redis client
+    // let chat = "";
+    // read/write with your Redis client
     // client.on("connect", function () {
-    //     client.set("foo", "bar");
+    //     client.get(key, (err, rep) => {
+    //         chat = rep;
+    //     });
+
     //     client.quit();
     // });
 
-    // client.quit();
-
-    // const chat = req.query.key ? content[req.query.key] : "";
-
     res.json({
-        key: req.query.key,
-        body: req.body,
+        key: key,
+        body: chat,
     });
 };
