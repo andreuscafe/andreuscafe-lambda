@@ -11,7 +11,10 @@ module.exports = (req, res) => {
     let chat = "";
     // read/write with your Redis client
     client.on("connect", function () {
+        console.log("Trying to get key: ", key);
+
         client.get(key, (err, rep) => {
+            console.log("REP is:", rep);
             chat = rep;
 
             res.json({

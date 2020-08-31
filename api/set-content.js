@@ -11,6 +11,7 @@ module.exports = (req, res) => {
     // read/write with your Redis client
     client.on("connect", function () {
         client.set(key, chat, (err, rep) => {
+            console.log("I think it's saved on key:", key, rep);
             res.json({
                 status: rep,
             });
